@@ -5,10 +5,9 @@ public class App {
         Scanner scanner=new Scanner(System.in);
         FileManager fileManager=new FileManager("city.csv");
         CityManager cityManager=new CityManager(fileManager);
-        ClientManager clientManager=new ClientManager(scanner);
+        ConsoleManager consoleManager=new ConsoleManager(scanner,cityManager);
         fileManager.read();
-        cityManager.printRandomCity();
-        cityManager.printRandomCity();
-        cityManager.printRandomCityStartWith(clientManager.inputCharacter());
+        consoleManager.processingOfGame();
+     //   cityManager.printRandomCityStartWith(clientManager.inputCharacter());
     }
 }
