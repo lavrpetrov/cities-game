@@ -1,3 +1,7 @@
+package Manager;
+
+import Manager.CityManager;
+
 import java.util.Scanner;
 
 public class ConsoleManager {
@@ -11,20 +15,11 @@ public class ConsoleManager {
         this.cityManager=cityManager;
     }
 
-    /*
-    public String inputCharacter(){
-        chr=null;
-        System.out.println("Введите город:");
-        chr=scanner.nextLine().trim().toUpperCase();
-        return chr;
-    }
 
-     */
-
+   /*
     public void processingOfGame(){
         boolean checkGame=false;
         String newCity=null;
-        System.out.println("Введите город:");
         do{
             newCity = scanner.nextLine().trim();
             while (!newCity.equals(stop) && !cityManager.checkCity(newCity)) {
@@ -35,7 +30,23 @@ public class ConsoleManager {
             }
         }while(!newCity.equals(stop)&&checkGame);
         System.exit(0);
-        //до тех пор, пока пользователь не ввел слово stop или система не нашла город
     }
 
+    */
+
+    public boolean processingOfGame(String newCity){
+        boolean check=true;
+        if (newCity.equals(stop)){
+            InfoBuilder.appendln("Вы проиграли");
+            check=false;
+        }
+        else{
+           if(cityManager.checkCity(newCity) ){
+               check=cityManager.printRandomCityStartWith(newCity);
+            }
+        }
+        return check;
+    }
+
+    //сначала сделать для работы с консолью, потом улучшить с передачей результата
 }

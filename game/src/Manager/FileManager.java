@@ -1,3 +1,5 @@
+package Manager;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,10 +12,9 @@ public class FileManager {
 
     public FileManager(String filename){
         this.filename=filename;
-        try{
-            file=new File(filename);
-        }catch (NullPointerException exception){
-            exception.printStackTrace();
+        file=new File(filename);
+        if (filename.isEmpty()){
+            System.out.println("Имя файла не введено");
         }
     }
 
@@ -33,9 +34,9 @@ public class FileManager {
             r.close();
             return city;
         } catch (FileNotFoundException exception) {
-            exception.printStackTrace();
+            System.out.println("Файл не найден");
         } catch (IOException exception) {
-            exception.printStackTrace();
+            System.out.println("Ошибка при чтении данных из файла");
         }
         return new ArrayList<String>();
     }
